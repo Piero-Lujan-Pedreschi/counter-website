@@ -1,1 +1,18 @@
+.title {
+    text-align: center;
+}
 
+.upper-counter {
+    display: flex;
+    margin: 10% 35% 0;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.lower-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 35% 0;
+}
