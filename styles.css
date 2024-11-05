@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-.upper-counter {
+.upper {
     display: flex;
     margin: 10% 35% 0;
     height: 50px;
@@ -10,7 +10,7 @@
     justify-content: center;
 }
 
-.lower-counter {
+.lower {
     display: flex;
     align-items: center;
     justify-content: center;

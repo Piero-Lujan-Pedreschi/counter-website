@@ -10,14 +10,26 @@
   </head>
   <body>
     <main>
-        <h1 class="title">Counter App</h1>  
-        <div class="upper-counter"> 
-          <button class="counter-minus"> - </button>
+        <h1 class="title">Input List</h1>  
+        <div class="upper"> 
+          <!-- <button class="counter-minus"> - </button>
           <h1 class="counter-display">(..)</h1>
-          <button class="counter-plus"> + </button>
+          <button class="counter-plus"> + </button> -->
+
+          <!-- <input type="text" id="input" name="text-input"> -->
+
+            <input type="text" id="string-input">
+            <button class="submit-input" onclick="document.querySelector('#string-input').value = ''">Submit</button>
         </div>
-        <div class="lower-counter">
-          <button class="counter-reset"> Reset </button>
+        <div class="lower">
+          <!-- <button class="counter-reset"> Reset </button> -->
+
+
+          <!-- <h1 id="input-display">Input Length: 0</h1> -->
+
+          <ul class="input-list-dynamic">
+
+          </ul>
         </div>
     </main>
     <script src="index.js"></script>
