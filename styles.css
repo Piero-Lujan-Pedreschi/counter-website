@@ -4,7 +4,7 @@
 
 .upper {
     display: flex;
-    margin: 10% 35% 5px;
+    margin: 5rem 35% 5px;
     height: 50px;
     align-items: center;
     justify-content: center;
@@ -21,6 +21,7 @@
     position: relative;
     width: 20rem;
     word-break: break-all;
+    padding: 0;
 }
 
 li {
@@ -36,5 +37,5 @@ li {
 }
 
 li:hover{
-    background-color: blueviolet;
+    background-color: rgba(137, 43, 226, 0.28);
 }
