@@ -21,11 +21,24 @@ function appendNewItem() {
         const removeButton = document.createElement('button');
         removeButton.textContent = "X";
         removeButton.setAttribute('class', 'remove-button');
+        listItem.appendChild(removeButton);
         removeButton.addEventListener("click", (event) => {
             const listItem = event.target.parentNode;
             inputList.removeChild(listItem);
-        })
-        listItem.appendChild(removeButton);
+        });
+
+        const editButton = document.createElement('button');
+        editButton.textContent = "Edit";
+        editButton.setAttribute('class', 'edit-button');
+        listItem.appendChild(editButton);
+        editButton.addEventListener('click', (event) => {
+            const listItem = event.target.parentNode;
+            const currentInput = listItem.firstChild.textContent;
+            let newInput = prompt('Edit the item:', currentInput);
+            if (newInput !== null) {
+                listItem.firstChild.textContent = newInput;
+            }
+        });
     } else {
         alert("enter valid string");
     }
