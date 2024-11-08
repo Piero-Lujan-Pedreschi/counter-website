@@ -18,42 +18,42 @@ function appendNewItem() {
         listItem.setAttribute('class', 'list-item');
         inputList.appendChild(listItem);
 
-        editItem(listItem);
-        removeItem(listItem);
+        createRemoveButton(listItem);
+        createEditButton(listItem);
     } else {
-        alert("enter valid string");
+        input.placeholder = "Please enter an item";
     }
     input.value = '';
 }
 
-
-function removeItem (item) {
+function createRemoveButton(item) {
     const removeButton = document.createElement('button');
     removeButton.textContent = "X";
     removeButton.setAttribute('class', 'remove-button');
     item.appendChild(removeButton);
-    removeButton.addEventListener("click", (event) => {
+    removeButton.onclick = function (event) {
         const listItem = event.target.parentNode;
         inputList.removeChild(listItem);
-    });
+    };
 }
 
-function editItem (item) {
+function createEditButton(item) {
     const editButton = document.createElement('button');
     editButton.textContent = "Edit";
     editButton.setAttribute('class', 'edit-button');
     item.appendChild(editButton);
-    editButton.addEventListener('click', (event) => {
+    editButton.onclick = function(event) {
         const listItem = event.target.parentNode;
         const currentInput = listItem.firstChild.textContent;
         input.value = currentInput;
-        if (input.value) {
-            console.log("read new input")
-            submitButton.onclick = function () {
-                console.log("new Input");
-                listItem.firstChild.textContent = input.value.trim();
-                submitButton.onclick = appendNewItem();
-            }
-        }
-    });
+        console.log("read new input")
+        submitButton.onclick = updateItem(listItem);
+        console.log("item updated");
+    }
+    
+}
+
+function updateItem(item) {
+    console.log("updating")
+    item.firstChild.textContent = input.value.trim();
 }
