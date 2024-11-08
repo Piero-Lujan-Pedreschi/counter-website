@@ -10,35 +10,27 @@ input.addEventListener("keypress", function(event) {
 });
 
 function appendNewItem() {
-    let newString = input.value.trim(); 
+    const newString = input.value.trim(); 
 
     if (newString) {
-        let listItem = document.createElement('li');
+        const listItem = document.createElement('li');
         listItem.textContent = newString;
         listItem.setAttribute('class', 'list-item');
         inputList.appendChild(listItem);
 
-        let removeButton = document.createElement('button');
+        const removeButton = document.createElement('button');
         removeButton.textContent = "X";
         removeButton.setAttribute('class', 'remove-button');
+        removeButton.addEventListener("click", (event) => {
+            const listItem = event.target.parentNode;
+            inputList.removeChild(listItem);
+        })
         listItem.appendChild(removeButton);
-
-
-        var removeButtons = document.getElementsByClassName('remove-button');
-        for (var i = 0; i < removeButtons.length; i++) {
-            removeButtons[i].addEventListener("click", function (event) {
-                let listItem = event.target.parentNode;
-                removeItem(listItem);
-            });
-        }
     } else {
         alert("enter valid string");
     }
     input.value = '';
 }
 
-function removeItem(item) {
-    inputList.removeChild(item);
-}
 
 
