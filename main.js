@@ -23,7 +23,7 @@ function appendNewItem() {
     } else {
         input.placeholder = "Please enter an item";
     }
-    input.value = '';
+    clearInput();
 }
 
 function createRemoveButton(item) {
@@ -47,13 +47,19 @@ function createEditButton(item) {
         const currentInput = listItem.firstChild.textContent;
         input.value = currentInput;
         console.log("read new input")
-        submitButton.onclick = updateItem(listItem);
-        console.log("item updated");
+        submitButton.onclick = (item) => updateItem(listItem);
     }
-    
 }
 
 function updateItem(item) {
-    console.log("updating")
+    console.log("updating");
     item.firstChild.textContent = input.value.trim();
+    console.log("finished updating");
+    clearInput();
+}
+
+function clearInput() {
+    submitButton.onclick = appendNewItem;
+    input.value = '';
+    console.log("clearing");
 }
