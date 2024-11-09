@@ -1,7 +1,7 @@
 const input = document.querySelector('#string-input');
 const submitButton = document.querySelector('.submit-input');
 const inputList = document.querySelector('.input-list-dynamic');
-
+input.placeholder = "Please enter an item";
 
 input.addEventListener("keypress", function(event) {
     if (event.key === 'Enter') {
@@ -12,54 +12,53 @@ input.addEventListener("keypress", function(event) {
 function appendNewItem() {
     const newString = input.value.trim(); 
 
+    // if (/\d/.test(newString)) {
+    //     //test
+    // } else 
     if (newString) {
         const listItem = document.createElement('li');
         listItem.textContent = newString;
         listItem.setAttribute('class', 'list-item');
         inputList.appendChild(listItem);
 
-        createRemoveButton(listItem);
-        createEditButton(listItem);
+        listItem.appendChild(createRemoveButton());
+        listItem.appendChild(createEditButton());
     } else {
-        input.placeholder = "Please enter an item";
+        alert("Enter valid item");
     }
-    clearInput();
+    submitButton.onclick = appendNewItem;
+    input.value = '';
 }
 
-function createRemoveButton(item) {
+function createRemoveButton() {
     const removeButton = document.createElement('button');
     removeButton.textContent = "X";
     removeButton.setAttribute('class', 'remove-button');
-    item.appendChild(removeButton);
-    removeButton.onclick = function (event) {
+    removeButton.onclick = (event) => {
         const listItem = event.target.parentNode;
         inputList.removeChild(listItem);
     };
+    return removeButton;
 }
 
-function createEditButton(item) {
+function createEditButton() {
     const editButton = document.createElement('button');
     editButton.textContent = "Edit";
     editButton.setAttribute('class', 'edit-button');
-    item.appendChild(editButton);
-    editButton.onclick = function(event) {
+    editButton.onclick = (event) => {
         const listItem = event.target.parentNode;
         const currentInput = listItem.firstChild.textContent;
         input.value = currentInput;
-        console.log("read new input")
         submitButton.onclick = (item) => updateItem(listItem);
     }
+    return editButton;
 }
 
 function updateItem(item) {
-    console.log("updating");
-    item.firstChild.textContent = input.value.trim();
-    console.log("finished updating");
-    clearInput();
-}
-
-function clearInput() {
-    submitButton.onclick = appendNewItem;
-    input.value = '';
-    console.log("clearing");
+    // if(/\d/.test(input.value)) {
+    //     //test
+    // } else 
+        item.firstChild.textContent = input.value.trim();
+        submitButton.onclick = appendNewItem;
+        input.value = ''; 
 }
