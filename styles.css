@@ -4,8 +4,8 @@
 
 .upper {
     display: flex;
-    margin: 5rem 35% 5px;
-    height: 50px;
+    margin: 5rem 35% 0;
+    height: auto;
     align-items: center;
     justify-content: center;
 }
@@ -39,4 +39,19 @@ li {
 
 li:hover{
     background-color: rgba(137, 43, 226, 0.28);
+}
+
+.hidden {
+    display: none;
+    justify-content: start;
+    margin: 0 35%;
+    padding: 0 5%;
+    height: 12px;
+}
+
+.error-msg {
+    display: block;
+    color: rgb(255, 37, 37);
+    margin-top: 0;
+    font-size: 12px;
 }
